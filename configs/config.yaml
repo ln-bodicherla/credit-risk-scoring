@@ -1,0 +1,23 @@
+model:
+  type: "lightgbm"
+  monotone_constraints: [1, -1, 0, 1, -1, 0, 0, 1]
+
+optuna:
+  n_trials: 200
+  timeout: 7200
+  metric: "auc"
+  cv_folds: 5
+
+scorecard:
+  base_score: 600
+  base_odds: 50
+  pdo: 20
+
+evaluation:
+  ks_threshold: 0.3
+  gini_threshold: 0.4
+  psi_threshold: 0.25
+
+fairness:
+  protected_attributes: ["race", "gender", "age"]
+  air_threshold: 0.8
